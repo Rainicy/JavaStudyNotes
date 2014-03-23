@@ -19,10 +19,10 @@ package com.chapter3.array;
  * @author Bingyu Wang
  */
 public class GameEntry {
-	/** name of the person earning this score */
-	protected String name;
     /** the score value */
     protected int score;
+	/** name of the person earning this score */
+	protected String name;
     
     /** Constructor to create a game entry */
     public GameEntry (String name, int score) {
