@@ -20,7 +20,7 @@ package com.chapter3.array;
  */
 public class GameEntry {
 	/** name of the person earning this score */
-    protected String name;
+	protected String name;
     /** the score value */
     protected int score;
     
