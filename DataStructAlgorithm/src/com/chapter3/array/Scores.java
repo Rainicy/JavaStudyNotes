@@ -10,7 +10,7 @@ package com.chapter3.array;
 
 /**
  * Scores class is defined for maintaining a set of scores as GameEntry objects,
- * which is for storing high scores in an array in non-decreasing order.
+ * which is for storing high scores in an array in non-increasing order.
  * 
  * @version 1.0 March 23, 2014
  * @author Rainicy
