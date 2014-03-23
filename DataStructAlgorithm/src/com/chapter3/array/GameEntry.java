@@ -16,7 +16,7 @@ package com.chapter3.array;
  * 
  * @version 1.0 March 22, 2014
  * 
- * @author Bingyu Wang
+ * @author Rainicy
  */
 public class GameEntry {
     /** name of the person earning this score */
@@ -44,7 +44,7 @@ public class GameEntry {
      * 
      * @param {String} name - Given a person's name 
      */
-    public void setName(String name) {
+    public void setName (String name) {
     	this.name = name;
     }
     /**
@@ -52,7 +52,7 @@ public class GameEntry {
      *  
      * @param {int} score - Given the score the person got
      */
-    public void setScore(int score) {
+    public void setScore (int score) {
     	this.score = score;
     }
     
