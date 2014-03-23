@@ -19,8 +19,8 @@ package com.chapter3.array;
  * @author Bingyu Wang
  */
 public class GameEntry {
-	/** name of the person earning this score */
-	protected String name;
+    /** name of the person earning this score */
+    protected String name;
     /** the score value */
     protected int score;
     
