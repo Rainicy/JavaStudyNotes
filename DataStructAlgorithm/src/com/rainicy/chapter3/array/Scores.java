@@ -38,6 +38,8 @@ public class Scores {
 			}
 			string += gameEntries[i];
 		}
+		string += "}";
+		
 		return string;
 	}
 

@@ -13,12 +13,12 @@ package com.rainicy.chapter3.array;
  * swapping them if they are in the wrong order. The pass through the list is
  * repeated until no swaps are needed, which indicates that the list is sorted.
  * 
- * Complexity:	1) Average case: O(n^2)
- * 				2) Worst case: O(n^2)
- * 				3) Best case: O(n)
+ * Complexity:	1) Average case: O(n^2);
+ * 				2) Worst case: O(n^2);
+ * 				3) Best case: O(n).
  * 
- * In-place
- * Stable: Yes
+ * In-place: Yes.
+ * Stable: Yes.
  * 
  * From: http://en.wikipedia.org/wiki/Bubble_sort
  * 
