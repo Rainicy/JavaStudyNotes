@@ -26,12 +26,12 @@ public class ArrayTest {
 	/** The decimal format for time */
 	private static final DecimalFormat FORMAT_TIME = new DecimalFormat("#.###");
 	/** The size for the creating array */ 
-	private static final int SIZE_ARRAY = 10000;
+	private static final int SIZE_ARRAY = 10;
 	/** The size for testing cases */
 	private static final int SIZE_CASES = 3;
 	
 	/** If show the sorted results */ 
-	private static final boolean IF_SHOW_RESULT = false;
+	private static final boolean IF_SHOW_RESULT = true;
 	/** If show the comparison among different sorting algorithms */
 	private static final boolean IF_SHOW_COMPARISON = true;
 	/** If check the results after the sorting */
@@ -115,7 +115,7 @@ public class ArrayTest {
 			// Output running time 
 			double timeInSecond = estimatedTime / 1000000d / 1000d;
 			System.out.println ("InsertionSort on Random Array take: " + 
-					FORMAT_TIME.format(timeInSecond));
+					FORMAT_TIME.format(timeInSecond) + " seconds");
 			if (IF_SHOW_RESULT) {
 				showResult (unsorted, result);
 			}
@@ -127,13 +127,44 @@ public class ArrayTest {
 		
 	}
 
-	private static void showResult(int[] unsorted2, int[] result) {
-		// TODO Auto-generated method stub
-		
+	/** 
+	 * Show the unsorted array and sorted one.
+	 * 
+	 * @param Array
+	 * @param Array
+	 * @return Void
+	 */
+	private static void showResult (int[] unsorted, int[] result) {
+		System.out.println ("Unsorted: " + print(unsorted));
+		System.out.println ("Sorted: " + print(result));
+		System.out.flush();
 	}
 
-	private static boolean checkSorted(int[] result) {
-		// TODO Auto-generated method stub
-		return false;
+	/** 
+	 * Print an array.
+	 * 
+	 * @param Array
+	 * @return String 
+	 */
+	private static String print (int[] array) {
+		final int[] clone = array.clone();
+		StringBuilder stringBuilder = new StringBuilder();
+		stringBuilder.append('[');
+		for (int i=0; i<array.length; i++) {
+			int element = clone[i];
+			stringBuilder.append(element + " ");
+		}
+		stringBuilder.append(']');
+		return stringBuilder.toString();
+	}
+	
+	/** Check if the given int array is sorted by non-decreasing order */
+	private static boolean checkSorted (int[] array) {
+		for (int i=0; i<array.length-1; i++) {
+			if (array[i] > array[i+1]) {
+				return false;
+			}
+		}
+		return true;
 	}
 }
