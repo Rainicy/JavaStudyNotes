@@ -26,12 +26,12 @@ public class ArrayTest {
 	/** The decimal format for time */
 	private static final DecimalFormat FORMAT_TIME = new DecimalFormat("#.###");
 	/** The size for the creating array */ 
-	private static final int SIZE_ARRAY = 10;
+	private static final int SIZE_ARRAY = 100000;
 	/** The size for testing cases */
 	private static final int SIZE_CASES = 3;
 	
 	/** If show the sorted results */ 
-	private static final boolean IF_SHOW_RESULT = true;
+	private static final boolean IF_SHOW_RESULT = false;
 	/** If show the comparison among different sorting algorithms */
 	private static final boolean IF_SHOW_COMPARISON = true;
 	/** If check the results after the sorting */
@@ -99,6 +99,7 @@ public class ArrayTest {
 		System.out.println("Starting sorting...");
 		System.out.println();
 		System.out.flush();
+		
 		// If run insertion sorting
 		if (IF_RUN_INSERTION) {
 			// testing on random array 
@@ -120,11 +121,140 @@ public class ArrayTest {
 				showResult (unsorted, result);
 			}
 			if (IF_SHOW_COMPARISON) {
-				insertionResults[countInsertionResults] = timeInSecond;
+				insertionResults[countInsertionResults++] = timeInSecond;
 			}
 			System.gc();
+			
+			
+			// testing on sorted array 
+			startTime = System.nanoTime();
+			// pass a copy of the array
+			result = InsertionSort.sort(sorted.clone());
+			estimatedTime = System.nanoTime() - startTime;
+			if (IF_CHECK_RESULTS) {
+				System.out.println("Checking the results on insertion sort");
+				if (!checkSorted(result)) {
+					System.err.println("InsertionSort failed.");
+				}
+			}
+			// Output running time 
+			timeInSecond = estimatedTime / 1000000d / 1000d;
+			System.out.println ("InsertionSort on Sorted Array take: " + 
+					FORMAT_TIME.format(timeInSecond) + " seconds");
+			if (IF_SHOW_RESULT) {
+				showResult (sorted, result);
+			}
+			if (IF_SHOW_COMPARISON) {
+				insertionResults[countInsertionResults++] = timeInSecond;
+			}
+			System.gc();
+			
+			// testing on reversed array 
+			startTime = System.nanoTime();
+			// pass a copy of the array
+			result = InsertionSort.sort(reverse.clone());
+			estimatedTime = System.nanoTime() - startTime;
+			if (IF_CHECK_RESULTS) {
+				System.out.println("Checking the results on insertion sort");
+				if (!checkSorted(result)) {
+					System.err.println("InsertionSort failed.");
+				}
+			}
+			// Output running time 
+			timeInSecond = estimatedTime / 1000000d / 1000d;
+			System.out.println ("InsertionSort on Reversed Array take: " + 
+					FORMAT_TIME.format(timeInSecond) + " seconds");
+			if (IF_SHOW_RESULT) {
+				showResult (reverse, result);
+			}
+			if (IF_SHOW_COMPARISON) {
+				insertionResults[countInsertionResults++] = timeInSecond;
+			}
+			System.gc();
+			
+			System.out.println();
+			System.out.flush();
 		}
 		
+		// If run bubble sorting
+		if (IF_RUN_BUBBLE) {
+			// testing on random array 
+			long startTime = System.nanoTime();
+			// pass a copy of the array
+			int[] result = BubbleSort.sort(unsorted.clone());
+			long estimatedTime = System.nanoTime() - startTime;
+			if (IF_CHECK_RESULTS) {
+				System.out.println("Checking the results on bubble sort");
+				if (!checkSorted(result)) {
+					System.err.println("BubbleSort failed.");
+				}
+			}
+			// Output running time 
+			double timeInSecond = estimatedTime / 1000000d / 1000d;
+			System.out.println ("BubbleSort on Random Array take: " + 
+					FORMAT_TIME.format(timeInSecond) + " seconds");
+			if (IF_SHOW_RESULT) {
+				showResult (unsorted, result);
+			}
+			if (IF_SHOW_COMPARISON) {
+				bubbleResults[countBubbleResults++] = timeInSecond;
+			}
+			System.gc();
+			
+			
+			// testing on sorted array 
+			startTime = System.nanoTime();
+			// pass a copy of the array
+			result = InsertionSort.sort(sorted.clone());
+			estimatedTime = System.nanoTime() - startTime;
+			if (IF_CHECK_RESULTS) {
+				System.out.println("Checking the results on bubble sort");
+				if (!checkSorted(result)) {
+					System.err.println("BubbleSort failed.");
+				}
+			}
+			// Output running time 
+			timeInSecond = estimatedTime / 1000000d / 1000d;
+			System.out.println ("BubbleSort on Sorted Array take: " + 
+					FORMAT_TIME.format(timeInSecond) + " seconds");
+			if (IF_SHOW_RESULT) {
+				showResult (sorted, result);
+			}
+			if (IF_SHOW_COMPARISON) {
+				bubbleResults[countBubbleResults++] = timeInSecond;
+			}
+			System.gc();
+			
+			// testing on reversed array 
+			startTime = System.nanoTime();
+			// pass a copy of the array
+			result = InsertionSort.sort(reverse.clone());
+			estimatedTime = System.nanoTime() - startTime;
+			if (IF_CHECK_RESULTS) {
+				System.out.println("Checking the results on bubble sort");
+				if (!checkSorted(result)) {
+					System.err.println("BubbleSort failed.");
+				}
+			}
+			// Output running time 
+			timeInSecond = estimatedTime / 1000000d / 1000d;
+			System.out.println ("BubbleSort on Reversed Array take: " + 
+					FORMAT_TIME.format(timeInSecond) + " seconds");
+			if (IF_SHOW_RESULT) {
+				showResult (reverse, result);
+			}
+			if (IF_SHOW_COMPARISON) {
+				bubbleResults[countBubbleResults++] = timeInSecond;
+			}
+			System.gc();
+			
+			System.out.println();
+			System.out.flush();
+		}
+		
+		if (IF_SHOW_COMPARISON) {
+			showComparison();
+		}
 	}
 
 	/** 
@@ -166,5 +296,37 @@ public class ArrayTest {
 			}
 		}
 		return true;
+	}
+	
+	/** Show the running time among different sorting algorithms */
+	private static void showComparison() {
+		String header = "Algorithm\t\t\tRandom\tSorted\tReverse Sorted";
+		String randomTime;
+		String sortedTime;
+		String reverseTime;
+		System.out.println(header);
+		
+		// show the insertion running time 
+		if (IF_RUN_INSERTION) {
+			int i = 0;
+			randomTime = FORMAT_TIME.format(insertionResults[i++]);
+			sortedTime = FORMAT_TIME.format(insertionResults[i++]);
+			reverseTime = FORMAT_TIME.format(insertionResults[i++]);
+			String insertionRow = "InsertionSort\t\t\t" + randomTime + "\t" + 
+									sortedTime + "\t" + reverseTime;
+			System.out.println(insertionRow);
+		}
+		
+		// show the bubble running time
+		if (IF_RUN_BUBBLE) {
+			int i = 0;
+			randomTime = FORMAT_TIME.format(bubbleResults[i++]);
+			sortedTime = FORMAT_TIME.format(bubbleResults[i++]);
+			reverseTime = FORMAT_TIME.format(bubbleResults[i++]);
+			String bubbleRow = "BubbleSort\t\t\t" + randomTime + "\t" + 
+									sortedTime + "\t" + reverseTime;
+			System.out.println(bubbleRow);
+		}
+		
 	}
 }

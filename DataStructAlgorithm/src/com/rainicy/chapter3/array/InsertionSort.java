@@ -42,7 +42,7 @@ public class InsertionSort {
 	private static void sort(int i, int[] unsorted) {
 		int insertInt = unsorted[i];	// the int to be inserted
 		int j = i - 1;	// start comparing with cell left of i
-		while ((j > 0) && (insertInt < unsorted[j])) {
+		while ((j >= 0) && (insertInt < unsorted[j])) {
 			unsorted[j+1] = unsorted[j--];	// move cell right and decrement j 
 		}
 		unsorted[j+1] = insertInt;
