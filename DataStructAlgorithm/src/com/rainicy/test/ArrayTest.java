@@ -146,7 +146,7 @@ public class ArrayTest {
 	 * @param Array
 	 * @return String 
 	 */
-	private static String print (int[] array) {
+	public static final String print (int[] array) {
 		final int[] clone = array.clone();
 		StringBuilder stringBuilder = new StringBuilder();
 		stringBuilder.append('[');
