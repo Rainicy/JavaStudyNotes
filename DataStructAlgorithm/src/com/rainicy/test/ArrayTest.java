@@ -26,7 +26,7 @@ public class ArrayTest {
 	/** The decimal format for time */
 	private static final DecimalFormat FORMAT_TIME = new DecimalFormat("#.###");
 	/** The size for the creating array */ 
-	private static final int SIZE_ARRAY = 100000;
+	private static final int SIZE_ARRAY = 1000;
 	/** The size for testing cases */
 	private static final int SIZE_CASES = 3;
 	
