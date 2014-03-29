@@ -21,8 +21,7 @@ public class RandomTest {
 	public static void main (String[] args) {
 		int[] number = new int[10];
 		Random random = new Random();	// a pseudo-random number generator
-		System.out.println(System.currentTimeMillis());
-		random.setSeed(2);
+		random.setSeed(System.currentTimeMillis());
 		// fill the number array with pseudo-random numbers
 		for (int i=0; i<number.length; i++) {
 			number[i] = random.nextInt(100);
