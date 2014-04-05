@@ -26,7 +26,7 @@ public class Node {
 	 * @param {String} string - the element 
 	 * @param {Node} node - the next node
 	 */
-	public Node(String string, Node node) {
+	public Node (String string, Node node) {
 		element = string;
 		next = node;
 	}
@@ -47,8 +47,9 @@ public class Node {
 	}
 	
 	/** Sets the next node of this node */
-	public void setNext(Node node) {
+	public void setNext (Node node) {
 		this.next = node;
 	}
+	
 }
 
