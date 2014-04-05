@@ -60,4 +60,23 @@ public class SinglyLinkedList {
 		templeHead.setNext(null);
 		size--;
 	}
+	
+	/** toString */
+	public String toString() {
+		StringBuffer stringBuffer = new StringBuffer();
+		Node node = this.head;
+		if (node == null) {
+			stringBuffer.append("Empty List!");
+		}
+		else {
+			while (node != null) {
+				stringBuffer.append(node.getElement());
+				node = node.getNext();
+				if (node != null) {
+					stringBuffer.append("->");
+				}
+			}
+		}
+		return stringBuffer.toString();
+	}
 }
