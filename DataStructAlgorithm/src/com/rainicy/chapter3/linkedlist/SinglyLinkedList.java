@@ -26,6 +26,16 @@ public class SinglyLinkedList {
 		size = 0;
 	}
 	
+	/** Get the list size */
+	public int getSize(){
+		return size;
+	}
+	
+	/** Get the head in the linked list */
+	public Node getHead(){
+		return head;
+	}
+	
 	// Update and search methods are here
 	/** Add a new node at the beginning of a singly linked list */
 	public void addFirst (Node node) {
@@ -40,12 +50,13 @@ public class SinglyLinkedList {
 		Node tail = head;
 		if (tail == null) {
 			head = node;
-			return;
 		}
-		while (tail.getNext() != null) {
-			tail = tail.getNext();
+		else {
+			while (tail.getNext() != null) {
+				tail = tail.getNext();
+			}
+			tail.setNext(node);
 		}
-		tail.setNext(node);
 		size++;
 	}
 	

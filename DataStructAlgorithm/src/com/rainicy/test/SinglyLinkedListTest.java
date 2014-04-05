@@ -26,7 +26,8 @@ import java.io.BufferedReader;
 public class SinglyLinkedListTest {
 	/** Operators for testing singly linked list */
 	public enum Operators {
-		ADDFIRST("1"), ADDLAST("2"), REMOVEFIRST("3"), SHOW("4"), EXIT("0");
+		ADDFIRST("1"), ADDLAST("2"), REMOVEFIRST("3"), SHOW("4"),
+		SHOWSIZE("5"), EXIT("0");
 		String choice;
 		Operators(String choice) {
 			this.choice = choice;
@@ -40,7 +41,8 @@ public class SinglyLinkedListTest {
 		BufferedReader bufferedReader = new BufferedReader (inputStreamReader);
 		boolean isLoop = true;
 		while (isLoop) {
-			print("1.Add First\n2.Add Last\n3.Remove First\n4.Show\n0.Exit\n");
+			print("1.Add First\n2.Add Last\n3.Remove First\n4.Show\n"
+					+ "5.Show size\n0.Exit\n");
 			String choice;
 			try {
 				choice = bufferedReader.readLine();
@@ -71,6 +73,9 @@ public class SinglyLinkedListTest {
 				break;
 			case "4":
 				print(singlyLinkedList.toString());
+				break;
+			case "5":
+				print("List Size: " + singlyLinkedList.getSize());
 				break;
 			case "0":
 				isLoop = false;
