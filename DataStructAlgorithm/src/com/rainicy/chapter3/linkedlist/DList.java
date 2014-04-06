@@ -171,4 +171,36 @@ public class DList {
 		dNode.setPrev(null);
 		size--;
 	}
+	
+	/** Returns whether the given node has previous node */
+	public boolean hasPrev (DNode dNode) {
+		return (dNode == getHeader());
+	}
+	
+	/** Returns whether the given node has next node */
+	public boolean hasNext (DNode dNode) {
+		return (dNode == getTrailer());
+	}
+	
+	/** Override the toString function */
+	public String toString() {
+		String string;
+		if (isEmpty()) {
+			string = "Empty list!";
+		}
+		else {
+			string = "[";
+			DNode dNode = getHeader().getNext();
+			while (dNode != getTrailer()) {
+				string += dNode.getElement();
+				dNode = dNode.getNext();
+				if (dNode != getTrailer()) {
+					string += "->";
+				}
+			}
+			string += "]";
+		}
+		return string;
+	}
+	
 }
