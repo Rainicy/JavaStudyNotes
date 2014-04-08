@@ -83,8 +83,8 @@ public class CircleList {
 		if (cursor == null) {
 			return "Empty list.";
 		}
-		String string = "[..."; 
-		string += cursor.getElement();
+		String string = "[...(";
+		string += cursor.getElement() + ")";
 		Node startNode = cursor;
 		for (advance(); startNode!=cursor; advance()) {
 			string += "->" + cursor.getElement();
