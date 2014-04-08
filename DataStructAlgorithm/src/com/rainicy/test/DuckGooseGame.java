@@ -31,10 +31,12 @@ public class DuckGooseGame {
 		Node goose;
 		Random random = new Random();
 		random.setSeed(System.currentTimeMillis());
-		// players 
+		// players
 		String[] players = {"A", "B", "C", "D", "E", "F", "G", "H"};
-		for (int i=players.length-1; i>=0; i--) {
+		// "it" starting with the first player in the players list
+		for (int i=0; i<players.length; i++) {
 			circleList.add(new Node(players[i], null));
+			circleList.advance();
 		}
 		
 		// begin to play the game. 
