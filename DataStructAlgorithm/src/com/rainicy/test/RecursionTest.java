@@ -9,8 +9,11 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.BufferedReader;
 
+import java.util.Arrays;
+
 import com.rainicy.chapter3.recursion.Factorial;
 import com.rainicy.chapter3.recursion.EnglishRuler;
+import com.rainicy.chapter3.recursion.Array;
 
 
 /** 
@@ -24,7 +27,8 @@ public class RecursionTest {
 		InputStreamReader inputStreamReader = new InputStreamReader(System.in);
 		BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
 		
-		System.out.println("1.Recursive factorial\n2.Draw ruler\n0.Exit");
+		System.out.println("1.Recursive factorial\n2.Draw ruler\n"
+				+ "3.Sum & Reverse\n0.Exit");
 		String choice = null;
 		try {
 			choice = bufferedReader.readLine();
@@ -38,12 +42,28 @@ public class RecursionTest {
 		case "2":
 			drawRulerTest();
 			break;
+		case "3":
+			sumAndReverseArray();
+			break;
 		case "0":
 			System.out.println("Thank you!");
 			break;
 		default:
 			break;
 		}
+	}
+
+	private static void sumAndReverseArray() {
+		int[] numbers = {1, 2, 3, 4, 5, 6, 7, 8, 9};
+		System.out.println("The numbers are: " + Arrays.toString(numbers));
+		int sum = Array.linearSum(numbers, numbers.length);
+		System.out.println("Sum result: " + sum);
+		
+		String[] strings = {"1", "2", "3", "4", "5", "6", "7", "8"};
+		System.out.println("The strings are: " + Arrays.toString(strings));
+		Array.reverse(strings, 0, strings.length-1);
+		System.out.println("The reversed strings:" + Arrays.toString(strings));
+		
 	}
 
 	private static void drawRulerTest() {
@@ -82,6 +102,7 @@ public class RecursionTest {
 				break;
 			case "0":
 				isLoop = false;
+				System.out.println("Thank you for using Draw Ruler.");
 				break;
 			default: 
 				System.out.println("Wrong Choice! Please input again.");
