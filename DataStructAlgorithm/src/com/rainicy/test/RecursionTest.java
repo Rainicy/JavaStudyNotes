@@ -14,6 +14,7 @@ import java.util.Arrays;
 import com.rainicy.chapter3.recursion.Factorial;
 import com.rainicy.chapter3.recursion.EnglishRuler;
 import com.rainicy.chapter3.recursion.Array;
+import com.rainicy.chapter3.recursion.Fibonacci;
 
 
 /** 
@@ -28,7 +29,7 @@ public class RecursionTest {
 		BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
 		
 		System.out.println("1.Recursive factorial\n2.Draw ruler\n"
-				+ "3.Sum & Reverse\n0.Exit");
+				+ "3.Sum & Reverse\n4.Fibonacci\n0.Exit");
 		String choice = null;
 		try {
 			choice = bufferedReader.readLine();
@@ -45,12 +46,55 @@ public class RecursionTest {
 		case "3":
 			sumAndReverseArray();
 			break;
+		case "4":
+			fibonacci();
+			break;
 		case "0":
 			System.out.println("Thank you!");
 			break;
 		default:
 			break;
 		}
+	}
+
+	private static void fibonacci() {
+		InputStreamReader inputStreamReader = new InputStreamReader(System.in);
+		BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
+		
+		boolean isLoop = true;
+		while (isLoop) {
+			System.out.println("1.Input number:\n0.Exit");
+			String choice = null;
+			try {
+				choice = bufferedReader.readLine();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+			switch (choice) {
+			case "1":
+				System.out.println("Input an integer:\n");
+				String string = null;
+				try {
+					string = bufferedReader.readLine();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+				int number = Integer.parseInt(string);
+				System.out.println("Fibonacci using Binary is: " + 
+								Fibonacci.BinaryFib(number));
+				System.out.println("Fibonacci using Linear is: " +
+								Fibonacci.linearFib(number));
+				break;
+			case "0":
+				isLoop = false;
+				System.out.println("Thank you for using!");
+				break;
+			default:
+				System.out.println("Wrong choise! Please choice again.");
+				break;
+			}
+		}
+		
 	}
 
 	private static void sumAndReverseArray() {
