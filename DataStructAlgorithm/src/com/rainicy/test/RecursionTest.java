@@ -15,7 +15,7 @@ import com.rainicy.chapter3.recursion.Factorial;
 import com.rainicy.chapter3.recursion.EnglishRuler;
 import com.rainicy.chapter3.recursion.Array;
 import com.rainicy.chapter3.recursion.Fibonacci;
-
+import com.rainicy.chapter3.recursion.Power;
 
 /** 
  * This the class for testing Recursive function
@@ -29,7 +29,7 @@ public class RecursionTest {
 		BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
 		
 		System.out.println("1.Recursive factorial\n2.Draw ruler\n"
-				+ "3.Sum & Reverse\n4.Fibonacci\n0.Exit");
+				+ "3.Sum & Reverse\n4.Fibonacci\n5.Power\n0.Exit");
 		String choice = null;
 		try {
 			choice = bufferedReader.readLine();
@@ -49,6 +49,9 @@ public class RecursionTest {
 		case "4":
 			fibonacci();
 			break;
+		case "5":
+			power();
+			break;
 		case "0":
 			System.out.println("Thank you!");
 			break;
@@ -57,13 +60,60 @@ public class RecursionTest {
 		}
 	}
 
+	private static void power() {
+		InputStreamReader inputStreamReader = new InputStreamReader(System.in);
+		BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
+		
+		boolean isLoop = true;
+		while (isLoop) {
+			System.out.println("1.Power\n0.Exit");
+			String choice = null;
+			try {
+				choice = bufferedReader.readLine();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+			switch (choice) {
+			case "1":
+				System.out.println("Input the base:");
+				String string = null;
+				try {
+					string = bufferedReader.readLine();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+				int base = Integer.parseInt(string);
+				System.out.println("Input the exponent:");
+				try {
+					string = bufferedReader.readLine();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+				int exponent = Integer.parseInt(string);
+				System.out.println("Power using linear power is: " + 
+								Power.linearPower(base, exponent));
+				System.out.println("Power using logarithm power is: " +
+								Power.logarithmPower(base, exponent));
+				break;
+			case "0":
+				isLoop = false;
+				System.out.println("Thank you for using!");
+				break;
+			default:
+				System.out.println("Wrong choise! Please choice again.");
+				break;
+			}
+		}
+		
+	}
+
 	private static void fibonacci() {
 		InputStreamReader inputStreamReader = new InputStreamReader(System.in);
 		BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
 		
 		boolean isLoop = true;
 		while (isLoop) {
-			System.out.println("1.Input number:\n0.Exit");
+			System.out.println("1.Input number\n0.Exit");
 			String choice = null;
 			try {
 				choice = bufferedReader.readLine();
