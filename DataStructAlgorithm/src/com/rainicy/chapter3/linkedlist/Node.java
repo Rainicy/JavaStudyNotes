@@ -1,53 +1,58 @@
 /*
  * Node.java
  * 
- * Version: 1.0	
+ * Version: 2.0	
  * 
- * Date: March 30, 2014
+ * Date: April 19, 2014
  */
 package com.rainicy.chapter3.linkedlist;
 
 /**
- * Node of a singly linked list of strings.
+ * Generic Node of a singly linked list of generic type.
  * 
- * @version 1.0
+ * @version 2.0
  * @author Rainicy
  *
  */
-public class Node {
-	/** We assume elements are character strings */
-	private String element;
+public class Node<E> {
+	/** We assume element generic type */
+	private E element;
 	/** The next pointer */
-	private Node next;
+	private Node<E> next;
+	
+	/** Constructor with null element and next node */
+	public Node() {
+		this(null, null);
+	}
 	
 	/** 
 	 * Constructor. Creates a node with the given element and next node
 	 * 
-	 * @param {String} string - the element 
-	 * @param {Node} node - the next node
+	 * @param the element 
+	 * @param the next node
 	 */
-	public Node (String string, Node node) {
-		element = string;
+	public Node (E element, Node<E> node) {
+		this.element = element;
 		next = node;
 	}
 	
 	/** Returns the element of this node */
-	public String getElement() {
+	public E getElement() {
 		return element;
 	}
 	
 	/** Returns the next of this node */
-	public Node getNext() {
+	public Node<E> getNext() {
 		return next;
 	}
 	
 	/** Sets the element of this node */
-	public void setElement (String element) {
+	public void setElement (E element) {
 		this.element = element;
 	}
 	
 	/** Sets the next node of this node */
-	public void setNext (Node node) {
+	public void setNext (Node<E> node) {
 		this.next = node;
 	}
 	
