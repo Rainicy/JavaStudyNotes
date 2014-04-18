@@ -3,7 +3,7 @@
  * 
  * Version: 2.0	
  * 
- * Date: April 19, 2014
+ * Date: April 18, 2014
  */
 package com.rainicy.chapter3.linkedlist;
 

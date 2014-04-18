@@ -50,5 +50,6 @@ public interface Stack<E> {
 	 * @return element removed
 	 * @exception EmptyStackException if the stack is empty.
 	 */
-	public E pop();
+	public E pop()
+		throws EmptyStackException;
 }
