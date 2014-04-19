@@ -37,7 +37,10 @@ public class HTML {
 	/** Test if every opening tag has a matching closing tag. */
 	public static boolean isHTMLMatched (String[] tag){
 		Stack<String> stack = new NodeStack<String>();
-		for (int i=0; (i<tag.length)&&(tag[i]!=null); i++) {
+		for (int i=0; i<tag.length; i++) {
+			if (tag[i] == null) { // a empty tag <>
+				continue;
+			}
 			if (isOpeningTag(tag[i])) {
 				stack.push(tag[i]);
 			}
