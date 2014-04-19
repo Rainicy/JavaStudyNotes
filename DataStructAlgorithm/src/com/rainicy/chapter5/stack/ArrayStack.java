@@ -95,27 +95,14 @@ public class ArrayStack<E> implements Stack<E> {
 		System.out.println(", stack: " + this);
 	}
 	
-	/**
-	 * Test for the array stack class.
-	 */
-	public static void main (String[] args) {
-		Object object;
-		ArrayStack<Integer> A = new ArrayStack<Integer>();
-		A.status("New ArrayStack<Integer> A", null);
-		A.push(7);
-		A.status("A.push(7)", null);
-		object = A.pop();
-		A.status("A.pop()", object);
-		
-		ArrayStack<String> B = new ArrayStack<String>();
-		A.status("New ArrayStack<String> B", null);
-		B.push("Rain");
-		B.status("B.push(\"Rain\")", null);
-		B.push("Icy");
-		B.status("B.push(\"Icy\")", null);
-		object = B.top();
-		B.status("B.top()", object);
-		object = B.pop();
-		B.status("B.pop()", object);
+	/** Reverse a given array by ArrayStack */
+	public static <E> void reverse (E[] array) {
+		Stack<E> stack = new ArrayStack<E>(array.length);
+		for (int i=0; i<array.length; i++) {
+			stack.push(array[i]);
+		}
+		for (int i=0; i<array.length; i++) {
+			array[i] = stack.pop();
+		}
 	}
 }
