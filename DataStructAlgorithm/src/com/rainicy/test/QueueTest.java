@@ -10,6 +10,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 
 import com.rainicy.chapter5.queue.ArrayQueue;
+import com.rainicy.chapter5.queue.NodeQueue;
 
 /**
  * The testing cases for testing Queue class.
@@ -22,6 +23,7 @@ public class QueueTest {
 		InputStreamReader inputStreamReader = new InputStreamReader(System.in);
 		BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
 		ArrayQueue<String> Q = null;
+		NodeQueue<String> nodeQ = null;
 		
 		boolean isLoop = true;
 		while (isLoop) {
@@ -31,42 +33,52 @@ public class QueueTest {
 			choice = bufferedReader.readLine();
 			switch (choice) {
 			case "1":
-				Q = new ArrayQueue<String> ();
-				System.out.println("New Queue: " + Q.toString());
+				Q = new ArrayQueue<String>();
+				nodeQ = new NodeQueue<String>();
+				System.out.println("New ArrayQueue: " + Q.toString());
+				System.out.println("New NodeQueue: " + nodeQ.toString());
 				break;
 			case "2":
-				if (Q == null) {
-					System.out.println("Please new a queue first");
+				if ((Q == null) || (nodeQ == null)) {
+					System.out.println("Please New Queue first");
 					continue;
 				}
 				System.out.println("Please input an string element");
 				String element = bufferedReader.readLine();
 				Q.add(element);
-				System.out.println(Q.toString());
+				nodeQ.add(element);
+				System.out.println("ArrayQueue: " + Q.toString());
+				System.out.println("NodeQueue: "+ nodeQ.toString());
 				break;
 			case "3":
-				if (Q == null) {
-					System.out.println("Please new a queue first");
+				if ((Q == null) || (nodeQ == null)) {
+					System.out.println("Please New Queue first");
 					continue;
 				}
-				String removed = Q.remove();
-				System.out.println("The removed element: " + removed);
-				System.out.println(Q.toString());
+				String removedQ = Q.remove();
+				String removedNodeQ = nodeQ.remove();
+				System.out.println("Removed ArrayQueue element: " + removedQ);
+				System.out.println("Removed NodeQueue element" + removedNodeQ);
+				System.out.println("ArrayQueue: " + Q.toString());
+				System.out.println("NodeQueue: "+ nodeQ.toString());
 				break;
 			case "4":
-				if (Q == null) {
-					System.out.println("Please new a queue first");
+				if ((Q == null) || (nodeQ == null)) {
+					System.out.println("Please New Queue first");
 					continue;
 				}
 				String peek = Q.peek();
-				System.out.println("The peek element: " + peek);
+				String peekNodeQ = nodeQ.peek();
+				System.out.println("Peek ArrayQueue element: " + peek);
+				System.out.println("Peek NodeQueue element: " + peekNodeQ);
 				break;
 			case "5":
-				if (Q == null) {
-					System.out.println("Please new a queue first");
+				if ((Q == null) || (nodeQ == null)) {
+					System.out.println("Please New Queue first");
 					continue;
 				}
-				System.out.println(Q.toString());
+				System.out.println("ArrayQueue: " + Q.toString());
+				System.out.println("NodeQueue: "+ nodeQ.toString());
 				break;
 			case "0":
 				isLoop = false;

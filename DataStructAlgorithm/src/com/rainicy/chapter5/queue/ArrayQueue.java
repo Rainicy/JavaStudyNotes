@@ -52,7 +52,7 @@ public class ArrayQueue<E> implements Queue<E> {
 	@Override
 	public void add(E element) throws FullQueueException {
 		if (size() == (capacity-1)) {	// left one empty cell
-			throw new FullQueueException("Stack is full now");
+			throw new FullQueueException("Queue is full now");
 		}
 		Q[rear] = element;
 		rear = (rear+1) % capacity;
@@ -61,7 +61,7 @@ public class ArrayQueue<E> implements Queue<E> {
 	@Override
 	public E remove() throws EmptyQueueException {
 		if (isEmpty()) {
-			throw new EmptyQueueException("Stack is empty now");
+			throw new EmptyQueueException("Queue is empty now");
 		}
 		E temp = Q[front];
 		Q[front] = null;
@@ -72,7 +72,7 @@ public class ArrayQueue<E> implements Queue<E> {
 	@Override
 	public E peek() throws EmptyQueueException {
 		if (isEmpty()) {
-			throw new EmptyQueueException("Stack is empty now");
+			throw new EmptyQueueException("Queue is empty now");
 		}
 		return Q[front];
 	}
