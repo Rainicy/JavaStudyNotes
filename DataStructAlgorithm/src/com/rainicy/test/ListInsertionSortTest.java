@@ -1,7 +1,7 @@
 /*
  * ListInsertionSortTest.java
  * 
- * Date: April 8, 2014
+ * Date: April 19, 2014
  */
 package com.rainicy.test;
 
@@ -10,17 +10,17 @@ import com.rainicy.chapter3.linkedlist.DList;
 import com.rainicy.chapter3.linkedlist.InsertionSort;
 
 /**
- * This class for testing doubly linked list class.
+ * This class for testing doubly linked list class with generic types
  * 
- * @version 1.0
+ * @version 2.0
  * @author Rainicy
  */
 public class ListInsertionSortTest {
 	public static void main(String[] args) {
 		String[] strings = {"wo", "zhen", "bu", "zhi", "dao", "!"};
-		DList dList = new DList();
+		DList<String> dList = new DList<String>();
 		for (String string : strings) {
-			DNode dNode = new DNode(string, null, null);
+			DNode<String> dNode = new DNode<String>(string, null, null);
 			dList.addLast(dNode);
 		}
 		System.out.println("The unsorted list:\n" + dList.toString());

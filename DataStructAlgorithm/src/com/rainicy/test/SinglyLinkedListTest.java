@@ -1,9 +1,7 @@
 /*
  * SinglyLinkedListTest.java
  * 
- * Version: 1.0
- * 
- * Date: April 5, 2014
+ * Date: April 19, 2014
  */
 package com.rainicy.test;
 
@@ -19,7 +17,7 @@ import java.io.BufferedReader;
  * This class for testing singly linked list. Implement basic 
  * UI functions.
  * 
- * @version 1.0
+ * @version 2.0
  * @author Rainicy
  *
  */
@@ -36,7 +34,8 @@ public class SinglyLinkedListTest {
 	public static void main(String[] args)
 		throws IOException
 	{
-		SinglyLinkedList singlyLinkedList = new SinglyLinkedList();
+		SinglyLinkedList<String> singlyLinkedList = new 
+													SinglyLinkedList<String>();
 		InputStreamReader inputStreamReader = new InputStreamReader(System.in);
 		BufferedReader bufferedReader = new BufferedReader (inputStreamReader);
 		boolean isLoop = true;
@@ -50,18 +49,18 @@ public class SinglyLinkedListTest {
 				throw new IOException("Input choice!");
 			}
 			String element;	// Insert node's element
-			Node node;	// Insert node
+			Node<String> node;	// Insert node
 			switch (choice) {
 			case "1": 
 				print("Insert element values: ");
 				element = bufferedReader.readLine();
-				node = new Node(element, null);
+				node = new Node<String>(element, null);
 				singlyLinkedList.addFirst(node);
 				break;
 			case "2":
 				print("Insert element values: ");
 				element = bufferedReader.readLine();
-				node = new Node(element, null);
+				node = new Node<String>(element, null);
 				singlyLinkedList.addLast(node);
 				break;
 			case "3":

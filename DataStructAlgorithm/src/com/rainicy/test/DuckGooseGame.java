@@ -1,7 +1,7 @@
 /*
  * DuckGooseGame.java
  * 
- * Date: April 7, 2014
+ * Date: April 19, 2014
  */
 package com.rainicy.test;
 
@@ -14,7 +14,7 @@ import com.rainicy.chapter3.linkedlist.CircleList;
 /**
  * DuckGoose game is using CircleList to implement it. 
  * 
- * @version 1.0
+ * @version 2.0
  * @author Rainicy
  *
  */
@@ -26,16 +26,16 @@ public class DuckGooseGame {
 	 * @param args
 	 */
 	public static void main (String[] args) {
-		CircleList circleList = new CircleList();
-		Node it;
-		Node goose;
+		CircleList<String> circleList = new CircleList<String>();
+		Node<String> it;
+		Node<String> goose;
 		Random random = new Random();
 		random.setSeed(System.currentTimeMillis());
 		// players
 		String[] players = {"A", "B", "C", "D", "E", "F", "G", "H"};
 		// "it" starting with the first player in the players list
 		for (int i=0; i<players.length; i++) {
-			circleList.add(new Node(players[i], null));
+			circleList.add(new Node<String>(players[i], null));
 			circleList.advance();
 		}
 		
@@ -48,7 +48,7 @@ public class DuckGooseGame {
 			// it Start to find the goose
 			while (random.nextBoolean() || random.nextBoolean()) {
 				circleList.advance();
-				Node duck = circleList.getCursor();
+				Node<String> duck = circleList.getCursor();
 				System.out.println("[" + duck.getElement() + "] is a Duck");
 			}
 			goose = circleList.remove();

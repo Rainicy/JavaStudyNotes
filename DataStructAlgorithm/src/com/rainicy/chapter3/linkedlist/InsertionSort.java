@@ -1,7 +1,7 @@
 /*
  * InsertionSort.java
  *	
- * Version: 1.0
+ * Version: 2.0
  * 
  * Date: March 23, 2014
  */
@@ -21,7 +21,7 @@ package com.rainicy.chapter3.linkedlist;
  * 
  * From: http://en.wikipedia.org/wiki/Insertion_sort
  * 
- * @version 1.0
+ * @version 2.0
  * @author Rainicy
  */
 public class InsertionSort {
@@ -29,14 +29,14 @@ public class InsertionSort {
 	public InsertionSort() {	
 	}
 	
-	/** Insertion sort of an array of int into non-decreasing order */
-	public static void sort (DList dList) {
+	/** Insertion sort of an Doubly Linked List into non-decreasing order */
+	public static <E extends Comparable<E>> void sort (DList<E> dList) {
 		if (dList.getSize() <= 1) {
 			return;
 		}
-		DNode endNode = dList.getFirst();
-		DNode pivotNode;
-		DNode insertNode;
+		DNode<E> endNode = dList.getFirst();
+		DNode<E> pivotNode;
+		DNode<E> insertNode;
 		while (endNode != dList.getLast()) {
 			pivotNode = endNode.getNext();	// Put pivot node to the left
 			dList.remove(pivotNode);	// Remove it in the list

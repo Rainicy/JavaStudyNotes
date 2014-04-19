@@ -1,7 +1,7 @@
 /*
  * CircleList.java
  * 
- * Date: April 7, 2014
+ * Date: April 19, 2014
  */
 package com.rainicy.test;
 
@@ -17,7 +17,7 @@ import com.rainicy.chapter3.linkedlist.CircleList;
  * This is the testing cases for circle list class, implemented by
  * very simple UI. 
  * 
- * @version 1.0
+ * @version 2.0
  * @author Rainicy
  *
  */
@@ -34,7 +34,7 @@ public class CircleListTest {
 	public static void main(String[] args)
 		throws IOException
 	{
-		CircleList circleList = new CircleList();
+		CircleList<String> circleList = new CircleList<String>();
 		InputStreamReader inputStreamReader = new InputStreamReader(System.in);
 		BufferedReader bufferedReader = new BufferedReader (inputStreamReader);
 		boolean isLoop = true;
@@ -47,12 +47,12 @@ public class CircleListTest {
 				throw new IOException("Input choice!");
 			}
 			String element;	// Insert node's element
-			Node node;	// Insert node
+			Node<String> node;	// Insert node
 			switch (choice) {
 			case "1": 
 				print("Insert element values: ");
 				element = bufferedReader.readLine();
-				node = new Node(element, null);
+				node = new Node<String>(element, null);
 				circleList.add(node);
 				break;
 			case "2":

@@ -1,22 +1,20 @@
 /*
  * CircleList.java
  * 
- * Version: 1.0
- * 
- * Date: April 7, 2014
+ * Date: April 19, 2014
  */
 package com.rainicy.chapter3.linkedlist;
 
 /**
- * Circulary linked list with nodes of type Node storing strings.
+ * Circulary linked list with nodes of type Node storing generic types.
  * 
- * @version 1.0
+ * @version 2.0
  * @author Rainicy
  *
  */
-public class CircleList {
+public class CircleList<E> {
 	/** the current cursor */
-	protected Node cursor;
+	protected Node<E> cursor;
 	/** the number of nodes in the list */
 	protected int size;
 	
@@ -32,7 +30,7 @@ public class CircleList {
 	}
 	
 	/** Returns the cursor */
-	public Node getCursor() {
+	public Node<E> getCursor() {
 		return cursor;
 	}
 	
@@ -49,7 +47,7 @@ public class CircleList {
 	}
 	
 	/** Adds a new node after the  cursor */
-	public void add (Node node) {
+	public void add (Node<E> node) {
 		if (cursor == null) {
 			node.setNext(node);
 			cursor = node;
@@ -62,11 +60,11 @@ public class CircleList {
 	}
 	
 	/** Removes the node after the cursor and returns it. */
-	public Node remove() {
+	public Node<E> remove() {
 		if (cursor == null) {	// the list is empty
 			return null;
 		}
-		Node removeNode = cursor.getNext();
+		Node<E> removeNode = cursor.getNext();
 		if (removeNode == cursor) {	// only one Node in this list
 			cursor = null;
 		}
@@ -85,7 +83,7 @@ public class CircleList {
 		}
 		String string = "[...(";
 		string += cursor.getElement() + ")";
-		Node startNode = cursor;
+		Node<E> startNode = cursor;
 		for (advance(); startNode!=cursor; advance()) {
 			string += "->" + cursor.getElement();
 		}

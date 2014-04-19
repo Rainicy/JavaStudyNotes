@@ -1,22 +1,20 @@
 /*
  * SinglyLinkedList.java
  * 
- * Version: 1.0
- * 
  * Date: March 31, 2014
  */
 package com.rainicy.chapter3.linkedlist;
 
 /**
- * Singly linked list.
+ * Singly linked list with generic types.
  *
- * @version 1.0
+ * @version 2.0
  * @author Rainicy
  * 
  */
-public class SinglyLinkedList {
+public class SinglyLinkedList<E> {
 	/** Head of the linked list */
-	protected Node head;
+	protected Node<E> head;
 	/** Number of nodes in the list */
 	protected int size;
 	
@@ -32,22 +30,22 @@ public class SinglyLinkedList {
 	}
 	
 	/** Get the head in the linked list */
-	public Node getHead(){
+	public Node<E> getHead(){
 		return head;
 	}
 	
 	// Update and search methods are here
 	/** Add a new node at the beginning of a singly linked list */
-	public void addFirst (Node node) {
+	public void addFirst (Node<E> node) {
 		node.setNext(head);
 		head = node;
 		size++;
 	}
 	
 	/** Add a new node at the end of a singly linked list */
-	public void addLast(Node node) {
+	public void addLast(Node<E> node) {
 		node.setNext(null);
-		Node tail = head;
+		Node<E> tail = head;
 		if (tail == null) {
 			head = node;
 		}
@@ -66,7 +64,7 @@ public class SinglyLinkedList {
 			System.err.println("The list is empty, cannot remove node");
 			return;
 		}
-		Node templeHead = head;
+		Node<E> templeHead = head;
 		head = head.getNext();
 		templeHead.setNext(null);
 		size--;
@@ -75,7 +73,7 @@ public class SinglyLinkedList {
 	/** toString */
 	public String toString() {
 		StringBuffer stringBuffer = new StringBuffer();
-		Node node = this.head;
+		Node<E> node = this.head;
 		if (node == null) {
 			stringBuffer.append("Empty List!");
 		}

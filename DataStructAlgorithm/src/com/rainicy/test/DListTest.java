@@ -1,9 +1,7 @@
 /*
  * DListTest.java
  * 
- * Version: 1.0
- * 
- * Date: April 6, 2014
+ * Date: April 19, 2014
  */
 package com.rainicy.test;
 
@@ -17,9 +15,9 @@ import com.rainicy.chapter3.linkedlist.DList;
 
 
 /**
- * This is the testing cases for doubly linked list.
+ * This is the testing cases for doubly linked list with generic types.
  * 
- * @version 1.0
+ * @version 2.0
  * @author Rainicy
  */
 public class DListTest {
@@ -35,7 +33,7 @@ public class DListTest {
 	public static void main(String[] args)
 		throws IOException
 	{
-		DList dList = new DList();
+		DList<String> dList = new DList<String>();
 		InputStreamReader inputStreamReader = new InputStreamReader(System.in);
 		BufferedReader bufferedReader = new BufferedReader (inputStreamReader);
 		boolean isLoop = true;
@@ -49,18 +47,18 @@ public class DListTest {
 				throw new IOException("Input choice!");
 			}
 			String element;	// Insert node's element
-			DNode node;	// Insert node
+			DNode<String> node;	// Insert node
 			switch (choice) {
 			case "1": 
 				print("Insert element values: ");
 				element = bufferedReader.readLine();
-				node = new DNode(element, null, null);
+				node = new DNode<String>(element, null, null);
 				dList.addFirst(node);
 				break;
 			case "2":
 				print("Insert element values: ");
 				element = bufferedReader.readLine();
-				node = new DNode(element, null, null);
+				node = new DNode<String>(element, null, null);
 				dList.addLast(node);
 				break;
 			case "3":

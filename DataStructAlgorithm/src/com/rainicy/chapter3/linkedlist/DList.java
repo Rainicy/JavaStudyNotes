@@ -1,32 +1,30 @@
 /*
  * DList.java
  * 
- * Version: 1.0
- * 
- * Date: April 6, 2014
+ * Date: April 19, 2014
  */
 package com.rainicy.chapter3.linkedlist;
 
 /** 
- * Doubly linked list with nodes of type DNode storing strings.
+ * Doubly linked list with nodes of type DNode with generic types.
  * 
- * @version 1.0
+ * @version 2.0
  * @author Rainicy
  *
  */
-public class DList {
+public class DList<E> {
 	/** Number of nodes */
 	protected int size;
 	/** Header in the list as a sentinel */
-	protected DNode header;
+	protected DNode<E> header;
 	/** Trailer in the list as a sentinel */
-	protected DNode trailer;
+	protected DNode<E> trailer;
 	
 	/** Constructor that creates an empty */
 	public DList(){
 		size = 0;
-		header = new DNode(null, null, null);
-		trailer = new DNode(null, header, null);
+		header = new DNode<E> (null, null, null);
+		trailer = new DNode<E> (null, header, null);
 		header.setNext(trailer);
 	}
 	
@@ -36,12 +34,12 @@ public class DList {
 	}
 	
 	/** Getter of the list's header */
-	public DNode getHeader() {
+	public DNode<E> getHeader() {
 		return header;
 	}
 	
 	/** Getter of the list's trailer */
-	public DNode getTrailer() {
+	public DNode<E> getTrailer() {
 		return trailer;
 	}
 	
@@ -51,7 +49,7 @@ public class DList {
 	}
 	
 	/** Returns the first node in the list */ 
-	public DNode getFirst() 
+	public DNode<E> getFirst() 
 		throws IllegalStateException
 	{
 		if (isEmpty()) {
@@ -61,7 +59,7 @@ public class DList {
 	}
 	
 	/** Returns the last node in the list */
-	public DNode getLast() 
+	public DNode<E> getLast() 
 		throws IllegalStateException
 	{
 		if (isEmpty()) {
@@ -75,7 +73,7 @@ public class DList {
 	 * 
 	 * @exception IllegalArgumentException if the given node is header
 	 */
-	public DNode getPrev (DNode dNode) 
+	public DNode<E> getPrev (DNode<E> dNode) 
 		throws IllegalArgumentException
 	{
 		// the given node is header, which has no previous node
@@ -90,7 +88,7 @@ public class DList {
 	 * 
 	 * @exception IllegalArgumentException if the given node is trailer
 	 */
-	public DNode getNext (DNode dNode) 
+	public DNode<E> getNext (DNode<E> dNode) 
 		throws IllegalArgumentException
 	{
 		if (dNode == getTrailer()) {
@@ -107,10 +105,10 @@ public class DList {
 	 * 
 	 * @exception IllegalArgumentException if the given node is the header 
 	 */
-	public void addBefore (DNode node, DNode newNode) 
+	public void addBefore (DNode<E> node, DNode<E> newNode) 
 		//throws IllegalArgumentException
 	{
-		DNode prev = getPrev (node);	// may throw exception
+		DNode<E> prev = getPrev (node);	// may throw exception
 		newNode.setNext(node);
 		newNode.setPrev(prev);
 		prev.setNext(newNode);
@@ -126,10 +124,10 @@ public class DList {
 	 * 
 	 * @exception IllegalArgumentException if the given node is trailer
 	 */
-	public void addAfter (DNode node, DNode newNode) 
+	public void addAfter (DNode<E> node, DNode<E> newNode) 
 		//throws IllegalArgumentException
 	{
-		DNode next = getNext (node);	// may throw exception
+		DNode<E> next = getNext (node);	// may throw exception
 		newNode.setNext(next);
 		newNode.setPrev(node);
 		node.setNext(newNode);
@@ -142,7 +140,7 @@ public class DList {
 	 * 
 	 * @param {DNode} dNode - the given new node
 	 */
-	public void addFirst (DNode dNode) {
+	public void addFirst (DNode<E> dNode) {
 		addAfter (getHeader(), dNode);
 	}
 	
@@ -151,7 +149,7 @@ public class DList {
 	 * 
 	 * @param {DNode} dNode - the given new node 
 	 */
-	public void addLast (DNode dNode) {
+	public void addLast (DNode<E> dNode) {
 		addBefore (getTrailer(), dNode);
 	}
 	
@@ -160,11 +158,11 @@ public class DList {
 	 * 
 	 * @param {DNode} dNode - the given node in the list
 	 */
-	public void remove (DNode dNode) 
+	public void remove (DNode<E> dNode) 
 		throws IllegalArgumentException
 	{
-		DNode prev = getPrev(dNode);	// may throw exception
-		DNode next = getNext(dNode);	// may throw exception
+		DNode<E> prev = getPrev(dNode);	// may throw exception
+		DNode<E> next = getNext(dNode);	// may throw exception
 		prev.setNext(next);
 		next.setPrev(prev);
 		dNode.setNext(null);
@@ -173,12 +171,12 @@ public class DList {
 	}
 	
 	/** Returns whether the given node has previous node */
-	public boolean hasPrev (DNode dNode) {
+	public boolean hasPrev (DNode<E> dNode) {
 		return (dNode == getHeader());
 	}
 	
 	/** Returns whether the given node has next node */
-	public boolean hasNext (DNode dNode) {
+	public boolean hasNext (DNode<E> dNode) {
 		return (dNode == getTrailer());
 	}
 	
@@ -190,7 +188,7 @@ public class DList {
 		}
 		else {
 			string = "[";
-			DNode dNode = getHeader().getNext();
+			DNode<E> dNode = getHeader().getNext();
 			while (dNode != getTrailer()) {
 				string += dNode.getElement();
 				dNode = dNode.getNext();
