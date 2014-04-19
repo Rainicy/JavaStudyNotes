@@ -1,65 +1,65 @@
 /*
  * DNode.java 
  * 
- * Version: 1.0
+ * Version: 2.0
  * 
- * Date: April 5, 2014
+ * Date: April 19, 2014
  */
 package com.rainicy.chapter3.linkedlist;
 
 /** 
- * Node of a double linked list.
+ * Node of a double linked list contains generic type elements.
  * 
- * @version 1.0
+ * @version 2.0
  * @author Rainicy
  */
-public class DNode {
+public class DNode<E> {
 	/** Element in node */
-	private String element;
+	private E element;
 	/** The previous pointer */
-	private DNode prev;
+	private DNode<E> prev;
 	/** The next pointer */
-	private DNode next;
+	private DNode<E> next;
 	
 	/** 
 	 * Constructor of DNode
-	 * @param {String} element - The element in the node.
-	 * @param {DNode} prev - The previous pointer
-	 * @param {DNode} next - The next pointer
+	 * @param element - The element in the node.
+	 * @param prev - The previous pointer
+	 * @param next - The next pointer
 	 */
-	public DNode (String element, DNode prev, DNode next) {
+	public DNode (E element, DNode<E> prev, DNode<E> next) {
 		this.element = element;
 		this.prev = prev;
 		this.next = next;
 	}
 	
 	/** Getter element */
-	public String getElement() {
+	public E getElement() {
 		return element;
 	}
 	
 	/** Getter previous node */
-	public DNode getPrev() {
+	public DNode<E> getPrev() {
 		return prev;
 	}
 	
 	/** Getter next node */
-	public DNode getNext() {
+	public DNode<E> getNext() {
 		return next;
 	}
 	
 	/** Setter element */
-	public void setElement (String element) {
+	public void setElement (E element) {
 		this.element = element;
 	}
 	
 	/** Setter previous node */
-	public void setPrev (DNode prev) {
+	public void setPrev (DNode<E> prev) {
 		this.prev = prev;
 	}
 	
 	/** Setter next node */
-	public void setNext (DNode next) {
+	public void setNext (DNode<E> next) {
 		this.next = next;
 	}
 } 
