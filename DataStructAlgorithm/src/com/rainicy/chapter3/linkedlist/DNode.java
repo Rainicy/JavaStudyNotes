@@ -21,6 +21,11 @@ public class DNode<E> {
 	/** The next pointer */
 	private DNode<E> next;
 	
+	/** Default constructor */
+	public DNode() {
+		this(null, null, null);
+	}
+	
 	/** 
 	 * Constructor of DNode
 	 * @param element - The element in the node.
