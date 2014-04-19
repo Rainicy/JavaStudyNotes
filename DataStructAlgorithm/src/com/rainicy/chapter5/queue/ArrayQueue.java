@@ -76,4 +76,17 @@ public class ArrayQueue<E> implements Queue<E> {
 		}
 		return Q[front];
 	}
+	
+	/** ToString function */
+	public String toString() {
+		String string = "[";
+		for (int i=0; i<size(); i++) {
+			string += Q[(front+i)%capacity];
+			if (i < (size()-1)) {
+				string += ", ";
+			}
+		}
+		string += "]";
+		return string;
+	}
 }
