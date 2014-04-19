@@ -12,46 +12,68 @@ package com.rainicy.chapter5.queue;
  * @version 1.0
  * @author Rainicy
  */
-public class ArrayQueue<E> implements Queue {
+public class ArrayQueue<E> implements Queue<E> {
 	
 	public static final int CAPACITY = 10;	// default array capacity
-	
 	/** The capacity of this queue array */
 	protected int capacity;
-	
 	/** Generic array used to implement the queue */
 	E Q[];
+	/** Index for the front of the queue */
+	protected int front;
+	/** Index for the rear of the queue */
+	protected int rear;
 	
-	/** Index for the  */
+	/** Constructor of no arguments */
+	public ArrayQueue() {
+		this(CAPACITY);
+	}
+	
+	/** Constructor by given capacity */
+	@SuppressWarnings("unchecked")
+	public ArrayQueue (int capacity) {
+		this.capacity = capacity;
+		Q = (E[]) new Object[capacity];
+		front = 0;
+		rear = 0;
+	}
+	
 	
 	@Override
 	public int size() {
-		// TODO Auto-generated method stub
-		return 0;
+		return ((rear - front + capacity) % capacity);
 	}
 
 	@Override
 	public boolean isEmpty() {
-		// TODO Auto-generated method stub
-		return false;
+		return (rear == front);
 	}
 
 	@Override
-	public void add(Object element) {
-		// TODO Auto-generated method stub
-		
+	public void add(E element) throws FullQueueException {
+		if (size() == (capacity-1)) {	// left one empty cell
+			throw new FullQueueException("Stack is full now");
+		}
+		Q[rear] = element;
+		rear = (rear+1) % capacity;
 	}
 
 	@Override
-	public Object remove() throws EmptyQueueException {
-		// TODO Auto-generated method stub
-		return null;
+	public E remove() throws EmptyQueueException {
+		if (isEmpty()) {
+			throw new EmptyQueueException("Stack is empty now");
+		}
+		E temp = Q[front];
+		Q[front] = null;
+		front = (front+1) % capacity;
+		return temp;
 	}
 
 	@Override
-	public Object peek() throws EmptyQueueException {
-		// TODO Auto-generated method stub
-		return null;
+	public E peek() throws EmptyQueueException {
+		if (isEmpty()) {
+			throw new EmptyQueueException("Stack is empty now");
+		}
+		return Q[front];
 	}
-
 }
