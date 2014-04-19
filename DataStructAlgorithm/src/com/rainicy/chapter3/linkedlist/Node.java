@@ -7,7 +7,6 @@
  */
 package com.rainicy.chapter3.linkedlist;
 
-import java.util.Arrays;
 /**
  * Generic Node of a singly linked list of generic type.
  * 
