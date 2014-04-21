@@ -15,7 +15,7 @@ package com.rainicy.chapter6.arraylist;
  */
 public class ArrayIndexList<E> implements IndexList<E> {
 	private E[] A; 	// array storing the elements of the indexed list
-	private int capacity = 16;	// intial length of array A
+	private int capacity = 2;	// intial length of array A
 	private int size = 0;	// the current number of elements stored
 	
 	/** Constructor of creating the indexed list with null parameters */
@@ -23,6 +23,7 @@ public class ArrayIndexList<E> implements IndexList<E> {
 		A = (E[]) new Object[capacity];
 	}
 
+		
 	@Override
 	public int size() {
 		return size;
@@ -44,7 +45,7 @@ public class ArrayIndexList<E> implements IndexList<E> {
 			}
 			A = B;
 		}
-		for (int j=size()-1; j>=i; j++) {
+		for (int j=size()-1; j>=i; j--) {
 			A[j+1] = A[j];
 		}
 		A[i] = element;
@@ -84,5 +85,17 @@ public class ArrayIndexList<E> implements IndexList<E> {
 		if ((index<0) || (index>=size)) {
 			throw new IndexOutOfBoundsException("Illegal index.");
 		}
+	}
+	
+	/** toString function */
+	public String toString() {
+		String s = "[";
+		for (int i=0; i<size(); i++) {
+			s += A[i];
+			if (i < size()-1) {
+				s += ",";
+			}
+		}
+		return s + "]";
 	}
 }
