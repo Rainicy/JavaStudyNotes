@@ -168,4 +168,18 @@ public class NodePositionList<E> implements PositionList<E>{
 		return element;
 	}
 	
+	/** toString method */
+	public String toString() {
+		String s = "[";
+		DNode<E> dNode = header.getNext();
+		for (int i=0; i<size(); i++) {
+			s += dNode.element();
+			if (i < size() - 1) {
+				s += ", ";
+			}
+			dNode = dNode.getNext();
+		}
+		return s + "]";
+	}
+	
 }
