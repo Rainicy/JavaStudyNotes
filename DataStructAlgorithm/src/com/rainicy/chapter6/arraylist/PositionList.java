@@ -1,18 +1,23 @@
 /*
  * PositionList.java
  *
- * Date: April 21, 2014
+ * Date: April 26, 2014
  */
 package com.rainicy.chapter6.arraylist;
 
+import java.util.Iterator;
+
 /**
- * Based on the Position element list.
+ * Based on the Position element list. Add iterator function.
  * 
- * @version 1.0
+ * @version 2.0
  * @author Rainicy
  *
  */
-public interface PositionList<E> {
+public interface PositionList<E> extends Iterable<E>{
+	/** Returns an iterator of all the elements in the list */
+	public Iterator<E> iterator();
+	
 	/** Returns the number of elements in this list. */
 	public int size();
 	

@@ -5,6 +5,8 @@
  */
 package com.rainicy.chapter6.arraylist;
 
+import java.util.Iterator;
+
 /**
  * Implements the node list ADT using a doubly
  * linked list.
@@ -180,6 +182,12 @@ public class NodePositionList<E> implements PositionList<E>{
 			dNode = dNode.getNext();
 		}
 		return s + "]";
+	}
+
+	@Override
+	public Iterator<E> iterator() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 	
 }
