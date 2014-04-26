@@ -5,6 +5,8 @@
  */
 package com.rainicy.test;
 
+import java.util.Iterator;
+
 import com.rainicy.chapter6.arraylist.ArrayIndexList;
 import com.rainicy.chapter6.arraylist.NodePositionList;
 import com.rainicy.chapter6.arraylist.Position;
@@ -62,5 +64,15 @@ public class ArrayListTest {
 		System.out.println("B.set(B.last(), BUUU): " + B.toString());
 		B.remove(B.last());
 		System.out.println("B.remove(B.last()): " + B.toString());
+		
+		System.out.println("\n\nTesting iterator....");
+		for (Iterator<String> it = B.iterator(); it.hasNext(); ) {
+			System.out.println(it.next());
+		}
+		System.out.println(NodePositionList.toString(B));
+		System.out.println("\n\nTesting iterator2....");
+		for (String ele : B) {
+			System.out.println(ele);
+		}
 	}
 }
