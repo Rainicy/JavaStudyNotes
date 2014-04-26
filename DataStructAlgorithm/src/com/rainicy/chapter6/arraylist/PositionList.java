@@ -5,8 +5,6 @@
  */
 package com.rainicy.chapter6.arraylist;
 
-import java.util.Iterator;
-
 /**
  * Based on the Position element list. Add iterator function.
  * 
@@ -14,10 +12,7 @@ import java.util.Iterator;
  * @author Rainicy
  *
  */
-public interface PositionList<E> extends Iterable<E>{
-	/** Returns an iterator of all the elements in the list */
-	public Iterator<E> iterator();
-	
+public interface PositionList<E> extends Iterable<E>{	
 	/** Returns the number of elements in this list. */
 	public int size();
 	

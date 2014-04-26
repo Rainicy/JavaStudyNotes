@@ -1,7 +1,7 @@
 /*
  * NodePositionList.java
  * 
- * Date: April 22, 2014
+ * Date: April 26, 2014
  */
 package com.rainicy.chapter6.arraylist;
 
@@ -9,7 +9,9 @@ import java.util.Iterator;
 
 /**
  * Implements the node list ADT using a doubly
- * linked list.
+ * linked list. Adds iterator function.
+ * 
+ * @version 2.0
  * @author Rainicy
  */
 public class NodePositionList<E> implements PositionList<E>{
@@ -183,11 +185,24 @@ public class NodePositionList<E> implements PositionList<E>{
 		}
 		return s + "]";
 	}
+	
+	/** Returns a textual representation of a given node list */
+	public static <E> String toString(PositionList<E> I) {
+		Iterator<E> it = I.iterator();
+		String s = "[";
+		while (it.hasNext()) {
+			s += it.next();
+			if (it.hasNext()) {
+				s += ", ";
+			}
+		}
+		s += "]";
+		return s;
+	}
 
 	@Override
 	public Iterator<E> iterator() {
-		// TODO Auto-generated method stub
-		return null;
+		return new ElementIterator<E> (this);
 	}
 	
 }
