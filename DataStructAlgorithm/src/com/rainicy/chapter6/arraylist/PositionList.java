@@ -20,10 +20,12 @@ public interface PositionList<E> extends Iterable<E>{
 	public boolean isEmpty();
 	
 	/** Returns the first node in the list */
-	public Position<E> first();
+	public Position<E> first()
+		throws EmptyListException;
 	
 	/** Returns the last node in the list */
-	public Position<E> last();
+	public Position<E> last()
+		throws EmptyListException;
 	
 	/** Returns the node before a given node in the list */
 	public Position<E> prev(Position<E> p) 
@@ -54,4 +56,7 @@ public interface PositionList<E> extends Iterable<E>{
 	/** Replaces the element stored at the given node, returning the old one */
 	public E set (Position<E> p, E e)
 		throws InvalidPositionException;
+	
+	/** Returns an iterable collection of all the nodes in the list */
+	public Iterable<Position<E>> positions();
 }

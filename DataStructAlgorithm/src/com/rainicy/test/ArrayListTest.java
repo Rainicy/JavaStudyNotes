@@ -65,11 +65,10 @@ public class ArrayListTest {
 		B.remove(B.last());
 		System.out.println("B.remove(B.last()): " + B.toString());
 		
-		System.out.println("\n\nTesting iterator....");
+		System.out.println("\n\nTesting iterator1....");
 		for (Iterator<String> it = B.iterator(); it.hasNext(); ) {
 			System.out.println(it.next());
 		}
-		System.out.println(NodePositionList.toString(B));
 		System.out.println("\n\nTesting iterator2....");
 		for (String ele : B) {
 			System.out.println(ele);

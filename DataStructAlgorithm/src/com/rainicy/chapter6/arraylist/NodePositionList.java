@@ -32,7 +32,7 @@ public class NodePositionList<E> implements PositionList<E>{
 	}
 	
 	/** 
-	 * Check if position is valid fro this list and converts it to 
+	 * Check if position is valid for this list and converts it to 
 	 * DNode if it is valid.
 	 */
 	protected DNode<E> checkPosition (Position<E> p) 
@@ -84,7 +84,9 @@ public class NodePositionList<E> implements PositionList<E>{
 	}
 
 	@Override
-	public Position<E> last() {
+	public Position<E> last() 
+		throws EmptyListException
+	{
 		if (isEmpty()) {
 			throw new EmptyListException("List is empty.");
 		}
@@ -203,6 +205,22 @@ public class NodePositionList<E> implements PositionList<E>{
 	@Override
 	public Iterator<E> iterator() {
 		return new ElementIterator<E> (this);
+	}
+
+	@Override
+	public Iterable<Position<E>> positions() {
+		PositionList<Position<E>> P = new NodePositionList<Position<E>>();
+		if (!isEmpty()) {
+			Position<E> p = first();
+			while (true) {
+				P.addLast(p);
+				if (p == last()) {
+					break;
+				}
+				p = next(p);
+			}
+		}
+		return P;
 	}
 	
 }
