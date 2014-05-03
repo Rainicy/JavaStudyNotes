@@ -30,7 +30,7 @@ public class FavoriteList<E> {
 		return fList.isEmpty();
 	}
 	
-	/** Removes a gievn element, provided it is in the list */
+	/** Removes a given element, provided it is in the list */
 	public void remove(E obj) {
 		Position<Entry<E>> p = find(obj);
 		if (p != null) {
@@ -89,7 +89,7 @@ public class FavoriteList<E> {
 	
 	/** Finds the position of a given element, or returns null; */
 	protected Position<Entry<E>> find(E obj) {
-		for (Position<Entry<E>> p :fList.positions()){
+		for (Position<Entry<E>> p : fList.positions()){
 			if (value(p).equals(obj)) {
 				return p;
 			}
@@ -98,12 +98,12 @@ public class FavoriteList<E> {
 	}
 
 	/** Helper method that extract the value of the entry at a given position*/
-	private E value(Position<Entry<E>> p) {
+	protected E value (Position<Entry<E>> p) {
 		return p.element().value();
 	}
 	
 	/** Helper method that extract the counter of the entry */ 
-	private int count(Position<Entry<E>> p) {
+	protected int count (Position<Entry<E>> p) {
 		return p.element().count();
 	}
 
@@ -132,7 +132,7 @@ public class FavoriteList<E> {
 			return ++count;
 		}
 		
-		/** Stirng representation of the entry as [count, value] */
+		/** String representation of the entry as [count, value] */
 		public String toString() {
 			return "[" + count + ", " + value + "]";
 		}
