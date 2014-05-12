@@ -172,12 +172,12 @@ public class DList<E> {
 	
 	/** Returns whether the given node has previous node */
 	public boolean hasPrev (DNode<E> dNode) {
-		return (dNode == getHeader());
+		return (dNode != getHeader());
 	}
 	
 	/** Returns whether the given node has next node */
 	public boolean hasNext (DNode<E> dNode) {
-		return (dNode == getTrailer());
+		return (dNode != getTrailer());
 	}
 	
 	/** Override the toString function */
