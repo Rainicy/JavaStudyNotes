@@ -18,9 +18,7 @@ public class DNode<E> implements Position<E>{
 	
 	/** Constructor without detail parameters */
 	public DNode() {
-		prev = null;
-		next = null;
-		element = null;
+		this(null, null, null);
 	}
 	
 	/** Constructor with detail information */

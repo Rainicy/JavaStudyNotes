@@ -217,6 +217,100 @@ public class LinkedBinaryTree<E> implements BinaryTree<E> {
 		return newRight;
 	}
 	
+	/** Remove a node with 0 or 1 child. 
+	 * Don't remove the node with two children 
+	 */
+	public E remove(Position<E> v) 
+		throws InvalidPositionException {
+		BTPosition<E> btV = checkPosition(v);
+		BTPosition<E> left = btV.getLeft();
+		BTPosition<E> right = btV.getRight();
+		// if get two children
+		if ((left != null) && (right != null)) {
+			throw new InvalidPositionException("Cannot remove the node "
+					+ "with two children");
+		}
+		// if 0 or 1 child
+		BTPosition<E> newV = null;
+		if (left != null) {
+			newV = left;
+		}
+		else if (right != null) {
+			newV = right;
+		}
+		else {
+			newV = null;
+		}
+		// if the removing node is root
+		if (btV == root()) {
+			if (newV != null) {
+				newV.setParent(null);
+			}
+			root = newV;
+		}
+		// the removing node is not root
+		else {
+			BTPosition<E> parent = btV.getParent();
+			if (newV != null) {
+				newV.setParent(parent);
+			}
+			// the removing node is the left child
+			if (btV == parent.getLeft()) {
+				parent.setLeft(newV);
+			}
+			else {
+				parent.setRight(newV);
+			}
+		}
+		size--;
+		return btV.element();
+	}
+	
+	/** Attaches two trees to be subtrees of an external node */
+	public void attach (Position<E> v, BinaryTree<E> leftTree, BinaryTree<E> rightTree)
+		throws InvalidPositionException {
+		BTPosition<E> btV = checkPosition(v);
+		if (isInternal(btV)) {
+			throw new InvalidPositionException("Cannot attach from "
+					+ "an internal node.");
+		}
+		// check left tree and right tree
+		if (!leftTree.isEmpty()) {
+			BTPosition<E> leftNode = checkPosition(leftTree.root());
+			btV.setLeft(leftNode);
+			leftNode.setParent(btV);
+		}
+		if (!rightTree.isEmpty()) {
+			BTPosition<E> rightNode = checkPosition(rightTree.root());
+			btV.setRight(rightNode);
+			rightNode.setParent(btV);
+		}
+	}
+	
+	/** Swap two elements between two nodes */
+	public void swapElements (Position<E> v1, Position<E> v2) {
+		BTPosition<E> btV1 = checkPosition(v1);
+		BTPosition<E> btV2 = checkPosition(v2);
+		// swap
+		E temp = btV1.element();
+		btV1.setElement(btV2.element());
+		btV2.setElement(temp);
+	}
+	
+	/** Expand an external node into an internal node with two external 
+	 *  node children.
+	 */
+	public void expandExternal (Position<E> v, E left, E right) 
+		throws InvalidPositionException {
+		BTPosition<E> btV = checkPosition(v);
+		if (!isExternal(btV)) {
+			throw new InvalidPositionException("Node should be an external");
+		}
+		insertLeft(btV, left);
+		insertRight(btV, right);
+	}
+	
+	
 	/** If given v is a good tree node, cast to BTPosition, otherwise
 	 *  throw exception 
 	 */
