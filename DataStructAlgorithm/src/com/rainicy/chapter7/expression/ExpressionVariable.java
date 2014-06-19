@@ -25,7 +25,7 @@ public class ExpressionVariable extends ExpressionTerm {
     }
 
     /** Get value */
-    public Integer getVariable() {
+    public Integer getValue() {
         return variable;
     }
 

@@ -8,6 +8,18 @@ package com.rainicy.chapter7.tree;
 import com.rainicy.chapter7.tree.BinaryTree;
 import com.rainicy.chapter6.arraylist.Position;
 
+
+/**
+ * Template for algorithms traversing a binary tree using an Euler
+ * tour. The subclasses of this class will redefine some of the
+ * methods of this class to create a specific traversal.
+ *
+ * @see com.rainicy.chapter7.expression.EvaluateExpressionTour
+ * @see com.rainicy.chapter7.expression.PrintExpressionTour
+ *
+ * @version 1.0
+ * @author Rainicy
+ */
 public abstract class EulerTour<E, R> {
     /** a Binary Tree */
     protected BinaryTree<E> tree;

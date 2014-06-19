@@ -34,7 +34,6 @@ public class EvaluateExpressionTour extends EulerTour<ExpressionTerm, Integer>{
             ExpressionOperator op = (ExpressionOperator) term;
             op.setOperands(r.left, r.right);
         }
-
         r.out = term.getValue();
     }
 }
