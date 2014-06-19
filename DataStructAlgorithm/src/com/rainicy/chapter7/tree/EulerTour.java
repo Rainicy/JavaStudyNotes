@@ -16,7 +16,7 @@ public abstract class EulerTour<E, R> {
      * Execution of the traversal. This abstract method must be
      * specified in a concrete subclass.
      */
-    public abstract R execute(BinaryTree<E > binaryTree);
+    public abstract R execute(BinaryTree<E> binaryTree);
 
     /** Initialization of the traversal */
     protected  void init(BinaryTree<E> binaryTree) {
