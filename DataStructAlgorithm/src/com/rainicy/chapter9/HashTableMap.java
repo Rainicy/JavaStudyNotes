@@ -5,6 +5,7 @@
  */
 package com.rainicy.chapter9;
 
+
 /**
  * A hash table data structure.
  * The Hash Code function uses the build-in hashCode method.
@@ -17,5 +18,5 @@ package com.rainicy.chapter9;
  * @version 1.0
  * @author Rainicy
  */
-public class HashTableMap {
+public class HashTableMap<K, V> implements Map<K,V> {
 }
