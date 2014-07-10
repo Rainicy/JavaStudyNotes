@@ -5,4 +5,4 @@
 ### BOOKS
 
 #### 1. [Data Structures & Algorithms in Java 5th Edition](http://www.wiley.com/WileyCDA/WileyTitle/productCd-EHEP001602.html) by **Michael T. Goodrich, Roberto Tamassia** 
-###### The code refer [Data Structures and Algorithms, 4th Edition](http://turing.cs.trincoll.edu/~ram/cpsc215/sourcecode/index.html)
+###### The code refers [Data Structures and Algorithms, 4th Edition](http://turing.cs.trincoll.edu/~ram/cpsc215/sourcecode/index.html)
