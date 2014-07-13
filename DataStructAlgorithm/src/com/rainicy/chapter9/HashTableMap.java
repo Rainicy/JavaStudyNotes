@@ -113,12 +113,12 @@ public class HashTableMap<K, V> implements Map<K,V> {
         }
 
         if (n >= capacity/2) {
-            rehash();   // keep the load factor smaller than 0.5
+            reHash();   // keep the load factor smaller than 0.5
             i = findEntry(key); //find again the appropriate spot for the entry
         }
         bucket[-i-1] = new HashEntry<K,V>(key, value);
         n++;
-        return null
+        return null;
 
     }
 
