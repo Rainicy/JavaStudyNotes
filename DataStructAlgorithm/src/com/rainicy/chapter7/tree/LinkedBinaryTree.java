@@ -309,6 +309,23 @@ public class LinkedBinaryTree<E> implements BinaryTree<E> {
 		insertLeft(btV, left);
 		insertRight(btV, right);
 	}
+
+    /** Remove an external node v and replace its parent with v's sibling */
+    public void removeAboveExternal(Position<E> v)
+            throws InvalidPositionException
+    {
+        if (!isExternal(v)) {
+            throw new InvalidPositionException("Node should be external.");
+        }
+        if (isRoot(v)) {
+            remove(v);
+        }
+        else {
+            Position<E> p = parent(v);
+            remove(v);
+            remove(p);
+        }
+    }
 	
 	
 	/** If given v is a good tree node, cast to BTPosition, otherwise

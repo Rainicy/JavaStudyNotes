@@ -5,7 +5,9 @@
  */
 package com.rainicy.chapter10;
 
+import com.rainicy.chapter6.arraylist.NodePositionList;
 import com.rainicy.chapter6.arraylist.Position;
+import com.rainicy.chapter6.arraylist.PositionList;
 import com.rainicy.chapter7.tree.LinkedBinaryTree;
 import com.rainicy.chapter8.DefaultComparator;
 import com.rainicy.chapter8.Entry;
@@ -20,13 +22,13 @@ import java.util.Comparator;
  *
  */
 public class BinarySearchTree<K,V>
-    extends LinkedBinaryTree<Entry<K, V>> implements Dictionary{
+    extends LinkedBinaryTree<Entry<K, V>> implements Dictionary<K, V> {
 
     protected Comparator<K> C;
     // insert node or removed node's parent
     protected Position<Entry<K,V>> actionPos;
     // number of entries
-    protected int size = 0;
+    protected int numEntries = 0;
 
     /** Creates a BinarySearchTree with a default comparator. */
     public BinarySearchTree() {
@@ -95,23 +97,83 @@ public class BinarySearchTree<K,V>
     protected Entry<K,V> insertAtExternal(Position<Entry<K,V>> v, Entry<K,V> e) {
         expandExternal(v, null, null);
         replace(v, e);
-        size++;
+        numEntries++;
         return e;
     }
+    /** Removes an external node and its parent. */
+    protected void removeExternal(Position<Entry<K,V>> v) {
+        removeAboveExternal(v);
+        numEntries--;
+    }
+
+    /** Search the position by given key, use the recursive way. */
+    protected Position<Entry<K,V>> treeSearch(K key, Position<Entry<K,V>> pos) {
+        if (isExternal(pos)) {
+            return pos;         // not found the key, return the external node
+        }
+        else {
+            K posKey = key(pos);
+            int comp = C.compare(key, posKey);
+            if (comp < 0) {
+                return treeSearch(key, left(pos));
+            }
+            else if (comp > 0) {
+                return treeSearch(key, right(pos));
+            }
+            return pos;     // found the key and return the internal node.
+        }
+    }
+
+    /** Adds all entries in the subtree rooted at v having keys equal to k. */
+    protected void addAll(PositionList<Entry<K,V>> L,
+                          Position<Entry<K,V>> v, K key) {
+        if (isExternal(v)) {
+            return;
+        }
+        Position<Entry<K,V>> pos = treeSearch(key, v);
+        if (!isExternal(pos)) {
+            addAll(L, left(pos), key);
+            L.addLast(pos.element());
+            addAll(L, right(pos), key);
+        }
+    }
+
+    /** Returns the number of entries in the tree. */
+    public int size() {
+        return numEntries;
+    }
+
+    /** Returns if the tree is empty. */
+    public boolean isEmpty() {
+        return size() == 0;
+    }
 
     @Override
-    public Entry find(Object key) throws InvalidKeyException {
+    public Entry find(K key) throws InvalidKeyException {
+        checkKey(key);
+        Position<Entry<K,V>> curPos = treeSearch(key, root());
+        actionPos = curPos;
         return null;
     }
 
     @Override
-    public Iterable<Entry> findAll(Object key) throws InvalidKeyException {
-        return null;
+    public Iterable<Entry<K,V>> findAll(K key) throws InvalidKeyException {
+        checkKey(key);
+        PositionList<Entry<K,V>> L = new NodePositionList<Entry<K,V>>();
+        addAll(L, root(), key);
+        return L;
     }
 
     @Override
-    public Entry insert(Object key, Object value) throws InvalidKeyException {
-        return null;
+    public Entry insert(K key, V value) throws InvalidKeyException {
+        checkKey(key);
+        Position<Entry<K,V>> insertPos = treeSearch(key, root());
+        while (!isExternal(insertPos)) {
+            insertPos = treeSearch(key, left(insertPos));
+        }
+        actionPos = insertPos;
+        return insertAtExternal(insertPos,
+                new BSTEntry<K, V>(key, value, insertPos));
     }
 
     @Override
@@ -120,7 +182,7 @@ public class BinarySearchTree<K,V>
     }
 
     @Override
-    public Iterable<Entry> entries() {
+    public Iterable<Entry<K,V>> entries() {
         return null;
     }
 }
