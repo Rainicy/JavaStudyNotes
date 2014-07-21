@@ -61,7 +61,7 @@ public class GameEntry {
     /** Returns a string representation of this entry */
     public String toString() {
     	String string;
-    	string = "(Name: " + name + ", Socre: " + score + ")";
+    	string = "(Name: " + name + ", Score: " + score + ")";
     	return string;
     }
     

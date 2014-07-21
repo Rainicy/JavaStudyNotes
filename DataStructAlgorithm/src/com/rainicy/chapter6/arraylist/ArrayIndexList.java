@@ -7,7 +7,7 @@ package com.rainicy.chapter6.arraylist;
 
 /**
  * Realization of an indexed list by means of an array,
- * which is doubled when the size of the inde exceeds the
+ * which is doubled when the size of the index exceeds the
  * capacity of the array.
  * 
  * @version 1.0

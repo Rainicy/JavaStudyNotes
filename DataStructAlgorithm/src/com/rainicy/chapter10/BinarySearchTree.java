@@ -61,6 +61,10 @@ public class BinarySearchTree<K,V>
         public V getValue() {
             return value;
         }
+
+        public Position<Entry<K,V>> position() {
+            return pos;
+        }
     }
 
     // Auxiliary methods:
@@ -149,10 +153,13 @@ public class BinarySearchTree<K,V>
     }
 
     @Override
-    public Entry find(K key) throws InvalidKeyException {
+    public Entry<K,V> find(K key) throws InvalidKeyException {
         checkKey(key);
         Position<Entry<K,V>> curPos = treeSearch(key, root());
         actionPos = curPos;
+        if (isInternal(curPos)) {
+            return entry(curPos);
+        }
         return null;
     }
 
@@ -165,9 +172,10 @@ public class BinarySearchTree<K,V>
     }
 
     @Override
-    public Entry insert(K key, V value) throws InvalidKeyException {
+    public Entry<K,V> insert(K key, V value) throws InvalidKeyException {
         checkKey(key);
         Position<Entry<K,V>> insertPos = treeSearch(key, root());
+        // if found the same key, insert it to the external position.
         while (!isExternal(insertPos)) {
             insertPos = treeSearch(key, left(insertPos));
         }
@@ -177,12 +185,38 @@ public class BinarySearchTree<K,V>
     }
 
     @Override
-    public Entry remove(Entry entry) throws InvalidEntryException {
-        return null;
+    public Entry<K,V> remove(Entry<K,V> entry) throws InvalidEntryException {
+        checkEntry(entry);
+        Position<Entry<K,V>> removePos = ((BSTEntry<K,V>) entry).position();
+        Entry<K,V> toReturn = entry(removePos);
+        if (isExternal(left(removePos))) {  // left is null
+            removePos = left(removePos);
+        }
+        else if (isExternal(right(removePos))) { // right is null
+            removePos = right(removePos);
+        }
+        else {  // left and right are not external.
+            Position<Entry<K,V>> swapPos = removePos;
+            removePos = right(swapPos);
+            do {    // find the successor node of swapPos
+                removePos = left(removePos);
+            } while (isInternal(removePos));
+            replaceEntry(swapPos, (Entry<K,V>) parent(removePos).element());
+        }
+        actionPos = sibling(removePos);
+        removeExternal(removePos);
+        return toReturn;
     }
 
     @Override
     public Iterable<Entry<K,V>> entries() {
-        return null;
+       PositionList<Entry<K,V>> entries = new NodePositionList<Entry<K,V>>();
+        Iterable<Position<Entry<K,V>>> positer = positions();
+        for (Position<Entry<K,V>> cur: positer) {
+            if (isInternal(cur)) {
+                entries.addLast(cur.element());
+            }
+        }
+        return entries;
     }
 }

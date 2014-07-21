@@ -19,7 +19,7 @@ public class TicTacToe {
 	private static final int NUMBER_COLUMNS = 3;
 	/** The number in a line can win */
 	private static final int WIN_SIZE = 3;
-	/** Two different plyers, X and O */
+	/** Two different players, X and O */
 	protected static final int X = 1, O = -1;
 	/** Empty cell */
 	protected static final int EMPTY = 0;

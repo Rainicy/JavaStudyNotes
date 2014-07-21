@@ -25,7 +25,7 @@ public class ArrayStack<E> implements Stack<E> {
 	/** index for the top of the stack */
 	protected int top = -1;
 	
-	/** Defualt constructor */
+	/** Default constructor */
 	public ArrayStack() {
 		this (CAPACITY);
 	}
